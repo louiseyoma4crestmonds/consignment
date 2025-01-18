@@ -1,0 +1,25 @@
+/* Styling for default state*/
+
+.default {
+  @apply border border-black rounded-lg bg-white hover:border-orange100;
+}
+
+/* Styling for disabled state*/
+.disabled {
+  @apply rounded-lg bg-white;
+}
+
+/* Styling for error state*/
+.error {
+  @apply rounded-lg border border-orange100;
+}
+
+/* Styling for checked*/
+.checked {
+  @apply bg-maroon100;
+}
+
+/* Styling for unchecked*/
+.unchecked {
+  @apply bg-white;
+}

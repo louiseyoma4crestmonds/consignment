@@ -1,0 +1,38 @@
+.CustomInput {
+  @apply text-black border  border-black hover:border-blue100 focus:border-[2px] focus:border-blue100  outline-none text-sm  px-4 bg-white;
+}
+
+.textArea {
+  @apply hover:border-blue100 focus:border-[2px] focus:border-blue100 p-4 cursor-pointer w-full border border-[#C2C2C2] rounded-md bg-white outline-none h-[152px];
+}
+
+/* Width Styling*/
+.normalWidth {
+  @apply w-[498px];
+}
+.fullWidth {
+  @apply w-full;
+}
+.middleWidth {
+  @apply w-11/12;
+}
+
+/* Height Styling */
+.smallHeight {
+  @apply h-[33px];
+}
+.mediumHeight {
+  @apply h-11 text-lg;
+}
+.largeHeight {
+  @apply h-20;
+}
+
+/* Variant Styling*/
+.selectVariant {
+  @apply self-center cursor-pointer w-full bg-white h-full outline-none;
+}
+
+.disabled {
+  @apply pointer-events-none h-16 border border-black text-base text-black rounded-md px-4 bg-black;
+}

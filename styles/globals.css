@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "RobotoSerif";
+  src: url("../fonts/RobotoSerif-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer base {
+  html {
+    position: relative;
+    font-family: Vidaloka, serif;
+  }
+}
