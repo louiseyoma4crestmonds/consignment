@@ -4,11 +4,10 @@ import Router, { useRouter } from "next/router";
 import CloseButton from "@/atoms/CloseButton";
 import useClickOutside from "@/hooks/useClickOutside";
 // import the icons you need
-import logo from "public/logo.png";
-import arrow from "public/arrow.png";
 import user from "public/user.png";
 import styles from "./UtilityBar.module.css";
 import { UtilityBarProps } from "./UtilityBar.types";
+import Logo from "@/atoms/Logo";
 
 function UtilityBar(props: UtilityBarProps): JSX.Element {
   const router = useRouter();
@@ -26,17 +25,17 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
     {
       name: "Tracking",
       link: "tracking",
-      children: ["Manage your delivery", "Track by mobile"],
+      // children: ["Manage your delivery", "Track by mobile"],
     },
     {
       name: "Support",
       link: "support",
-      children: ["Locations", "FAQs", "Customer Support"],
+      // children: ["Locations", "FAQs", "Customer Support"],
     },
     {
       name: "Account",
-      link: "account",
-      children: ["My Profile", "Address Book", "open account"],
+      link: "open-account",
+      // children: ["My Profile", "Address Book", "open account"],
     },
   ];
 
@@ -45,10 +44,15 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
   return (
     <div className="border-b border-b-maroon100 ">
       <div className={showMobileNavBar ? "flex flex-row-reverse " : "hidden"}>
-        <div className=" absolute z-50 text-maroon100 bg-backgroundCream h-screen w-10/12 border border-maroon100 text-white">
+        <div className=" absolute z-50 text-maroon100 bg-white h-screen w-10/12 border border-maroon100 text-white">
           <div className="flex justify-between px-4 py-4 bg-maroon100 border-b border-b-backgroundCream border-maroon100">
-            <div className="self-center font-bold text-md text-backgroundCream ">
-              <Image src={logo} width={70} height={28} />
+            <div
+              onClick={() => {
+                router.push({ pathname: "/" });
+              }}
+              className="self-center font-bold text-md text-backgroundCream "
+            >
+              <Logo />
             </div>
 
             <div>
@@ -65,7 +69,7 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
               className={
                 activeTab === `/${link.link}`
                   ? "px-6 py-6 phone:border-b border-b-maroon100 cursor-pointer flex justify-between bg-maroon100 text-backgroundCream hover:bg-backgroundCream hover:text-maroon100"
-                  : "px-6 py-6 border-b phone:border-b-maroon100 text-maroon100 cursor-pointer flex justify-between hover:bg-maroon100 hover:text-backgroundCream"
+                  : "px-6 py-6 border-b hover:bg-maroon100 phone:border-b-maroon100 text-maroon100 cursor-pointer flex justify-between hover:bg-maroon100 hover:text-backgroundCream"
               }
               tabIndex={0}
               role="button"
@@ -84,14 +88,31 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
         <div className="  flex phone:justify-between phone:place-content-center  gap-x-0 phone:gap-x-0 px-8 phone:px-2 py-4">
           <div className="w-full flex justify-between">
             <div className="hidden phone:flex">
-              <div className="self-center text-lg phone:text-xs text-white uppercase">
-                <Image src={logo} width={70} height={28} />
+              <div
+                tabIndex={0}
+                role="button"
+                onKeyDown={() => {}}
+                onClick={() => {
+                  router.push({ pathname: "/" });
+                }}
+                className="self-center text-lg phone:text-xs text-white Capitalize"
+              >
+                <div className="text-maroon100">.</div>
+                <Logo />
               </div>
             </div>
             <div className="phone:hidden">
               <div className="self-center flex gap-x-16">
-                <div className="phone:hidden text-lg font-black phone:text-xs text-white uppercase">
-                  <Image src={logo} width={70} height={28} />
+                <div
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={() => {}}
+                  onClick={() => {
+                    router.push({ pathname: "/" });
+                  }}
+                  className="phone:hidden text-lg font-black phone:text-xs text-white Capitalize self-center"
+                >
+                  <Logo />
                 </div>
                 <div
                   ref={dropdownRef}
@@ -103,16 +124,12 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
                       role="button"
                       onKeyDown={() => {}}
                       onClick={() => {
-                        setSelectedMenu(link.name);
+                        router.push({ pathname: link.link });
+                        // setSelectedMenu(link.name);
                       }}
                       className="cursor-pointer self-center hover:underline z-20 space-y-4"
                     >
-                      <div>
-                        {link.name}{" "}
-                        <span className="text-xs">
-                          <Image src={arrow} height={10} width={10} />
-                        </span>{" "}
-                      </div>
+                      <div>{link.name} </div>
 
                       <div
                         className={

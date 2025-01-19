@@ -56,7 +56,7 @@ function Home(): JSX.Element {
         {/* END OF UTILITY BAR */}
 
         <div
-          className="phone:h-[250px] w-full  opacity-80 "
+          className="phone:h-[250px] w-full  opacity-90 "
           style={{
             backgroundImage: `url('/packages.webp')`,
             backgroundRepeat: "no-repeat",
@@ -70,8 +70,10 @@ function Home(): JSX.Element {
               <div className="w-full self-center ">
                 <SlideInUpDiv>
                   <div className="w-full flex place-content-center">
-                    <div className="font-black text-5xl text-backgroundCream">
-                      Welcome to FedXpress
+                    <div className="font-black text-5xl phone:text-3xl text-backgroundCream">
+                      Welcome to <span>Globe</span>
+                      <span className="text-orange100">Go</span>
+                      <span>Express</span>
                     </div>
                   </div>
                 </SlideInUpDiv>
@@ -184,7 +186,15 @@ function Home(): JSX.Element {
               </div>
             </div>
             <div className="basis-4/12">
-              <div className="w-full text-center text-lg text-white p-3 bg-orange100 font-bold uppercase">
+              <div
+                tabIndex={0}
+                role="button"
+                onKeyDown={() => {}}
+                onClick={() => {
+                  Router.push({ pathname: "/open-account" });
+                }}
+                className="w-full text-center text-lg text-white p-3 bg-orange100 font-bold uppercase"
+              >
                 Open and account
               </div>
             </div>

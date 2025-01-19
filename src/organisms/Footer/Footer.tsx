@@ -14,9 +14,7 @@ function Footer(): JSX.Element {
               Our Company
             </div>
             <div className="capitalize space-y-4">
-              <div>About FedEx</div>
-              <div>Investor Relations</div>
-              <div>Careers</div>
+              <div>About GlobeGoExpress</div>
               <div>Conditions for Carriage</div>
               <div>Binding cooperate Rules</div>
             </div>
@@ -32,18 +30,18 @@ function Footer(): JSX.Element {
           </div>
           <div className="space-y-4">
             <div className="uppercase text-maroon100 font-bold">
-              More from FedEx
+              More from GlobeGoExpress
             </div>
             <div className="capitalize space-y-4">
               <div>Fuel Surchages</div>
               <div>Resources</div>
-              <div>FedEx Locations</div>
+              <div>GlobeGoExpress Locations</div>
               <div>Rates & Surchages</div>
             </div>
           </div>
           <div className="space-y-4">
             <div className="uppercase text-maroon100 font-bold">
-              Follow FedEx
+              Follow GlobeGoExpress
             </div>
             <div className="flex gap-x-4">
               <div>
@@ -64,7 +62,9 @@ function Footer(): JSX.Element {
       </div>
 
       <div className="w-full bg-maroon100 py-8 px-8 text-xs text-white text-center flex flex-row phone:flex-col phone:gap-y-4 justify-between">
-        <div className="">Copyright © FedEx 1995-2024. All Rights Reserved</div>
+        <div className="">
+          Copyright © GlobeGoExpress 1995-2024. All Rights Reserved
+        </div>
         <div>Terms of Use | Security & Privacy</div>
       </div>
     </div>
