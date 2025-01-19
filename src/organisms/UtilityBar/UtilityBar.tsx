@@ -3,11 +3,11 @@ import Image from "next/image";
 import Router, { useRouter } from "next/router";
 import CloseButton from "@/atoms/CloseButton";
 import useClickOutside from "@/hooks/useClickOutside";
+import Logo from "@/atoms/Logo";
 // import the icons you need
 import user from "public/user.png";
 import styles from "./UtilityBar.module.css";
 import { UtilityBarProps } from "./UtilityBar.types";
-import Logo from "@/atoms/Logo";
 
 function UtilityBar(props: UtilityBarProps): JSX.Element {
   const router = useRouter();
@@ -50,6 +50,9 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
               onClick={() => {
                 router.push({ pathname: "/" });
               }}
+              tabIndex={0}
+              role="button"
+              onKeyDown={() => {}}
               className="self-center font-bold text-md text-backgroundCream "
             >
               <Logo />
