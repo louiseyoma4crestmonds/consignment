@@ -5,8 +5,8 @@ import UtilityBar from "@/organisms/UtilityBar";
 import CustomInput from "@/molecules/CustomInput";
 import CheckBox from "@/atoms/CheckBox";
 import NewModal from "@/organisms/NewModal/NewModal";
-import { createBusinessAccount } from "./api";
 import Backdrop from "@/molecules/Backdrop";
+import { createBusinessAccount } from "./api";
 
 function OpenBusinessAccount(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);

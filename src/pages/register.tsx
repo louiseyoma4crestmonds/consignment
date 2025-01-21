@@ -338,7 +338,7 @@ function Register(): JSX.Element {
                   </div>
                   <div className="px-8 space-y-4 py-4">
                     <div className="w-5/6 phone:w-full flex gap-x-1">
-                      <div></div>
+                      <div />
                       <div>
                         {" "}
                         I would like to receive information about FedEx via

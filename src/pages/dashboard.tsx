@@ -1,14 +1,8 @@
-import { useSession } from "next-auth/react";
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import { getSessionDetails } from "./api";
-import Image from "next/image";
 import Footer from "@/organisms/Footer";
 import UtilityBar from "@/organisms/UtilityBar";
-import specificRate from "public/calculator.png";
-import van from "public/transport.png";
-import suppiles from "public/supplies.png";
-import account from "public/black-user.png";
 
 function Dashboard(): JSX.Element {
   const [token, setToken] = useState<string>("");
@@ -17,19 +11,17 @@ function Dashboard(): JSX.Element {
 
   useEffect(() => {
     if (token === "") {
-      getSessionDetails().then((response: any) => {
-        setToken(response?.user.accessToken.token.tokenData.userToken);
-        setFirstName(response?.user.accessToken.token.tokenData.firstName);
-        setEmail(response?.user.accessToken.token.tokenData.email);
-      });
+      getSessionDetails()
+        .then((response: any) => {
+          setToken(response?.user.accessToken.token.tokenData.userToken);
+          setFirstName(response?.user.accessToken.token.tokenData.firstName);
+          setEmail(response?.user.accessToken.token.tokenData.email);
+        })
+        .catch(() => {
+          Router.replace({ pathname: "/sign-in" });
+        });
     }
   });
-
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      Router.replace("/sign-in");
-    }
-  }, [status]);
 
   return (
     <div>
