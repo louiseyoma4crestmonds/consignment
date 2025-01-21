@@ -1,8 +1,8 @@
 import Router from "next/router";
 import { useEffect, useState } from "react";
-import { getSessionDetails } from "./api";
 import Footer from "@/organisms/Footer";
 import UtilityBar from "@/organisms/UtilityBar";
+import { getSessionDetails } from "./api";
 
 function Dashboard(): JSX.Element {
   const [token, setToken] = useState<string>("");
@@ -40,7 +40,7 @@ function Dashboard(): JSX.Element {
           <div className="w-full h-full flex place-content-center ">
             <div className="self-center w-full text-white px-16 phone:px-4 space-y-4 phone:text-center">
               <div className="font-black text-5xl text-backgroundCream">
-                Welcome, {firstName}
+                Welcome, {firstName===""?email:firstName}
               </div>
             </div>
           </div>
