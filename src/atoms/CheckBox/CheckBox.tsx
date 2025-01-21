@@ -16,7 +16,7 @@ function CheckBox(props: CheckBoxProps) {
   return (
     <div
       id={id}
-      className={`w-6 h-6 flex place-content-center cursor-pointer ${
+      className={`w-6 h-6 flex place-content-center cursor-pointer  ${
         state === "default"
           ? styles.default
           : state === "disabled"

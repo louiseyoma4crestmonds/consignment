@@ -1,6 +1,15 @@
+/* This is a more customized select box. This select box receives an array of select options
+    Each selection option is of the form name-id. 
+    the name part is what shows up on the select element(both the dropdown and chosen field).
+    when an option is selected from the dropdown, the id part is returned.
+
+    If you want a regular select box behaviour user the other select box in admin or candidate specific 
+    molecule component.
+*/
+
 import React, { useState } from "react";
 import useClickOutside from "@/hooks/useClickOutside";
-import DropdownIcon from "../../atoms/Icons/DropdownIcon";
+import DropdownIcon from "@/atoms/Icons/DropdownIcon";
 import { SelectBoxProps } from "./SelectBox.types";
 import styles from "./SelectBox.module.css";
 
@@ -11,11 +20,12 @@ function AMMInput(props: SelectBoxProps) {
     getInputedValue,
     selectOptions,
     activeSelectOption,
+    preSelection,
     height = "33px",
   } = props;
 
   const [showSelectDropDown, setShowSelectDropDown] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<string>();
+  const [selectedOption, setSelectedOption] = useState(activeSelectOption);
 
   const dropdownRef = useClickOutside(() => setShowSelectDropDown(false));
 
@@ -28,6 +38,7 @@ function AMMInput(props: SelectBoxProps) {
     ) {
       setSelectedOption(selectedOption);
     }
+    console.log("ssee: ", preSelection);
   });
 
   /* Function definitions */
@@ -40,9 +51,9 @@ function AMMInput(props: SelectBoxProps) {
       ref={dropdownRef}
       className={`w-full h-[${height}]  border  rounded-md border-[#C2C2C2]`}
     >
-      <div className="h-8 space-y-4 bg-white">
+      <div className="w-full h-full space-y-2 bg-white">
         <div
-          className={styles.selectInput}
+          className="w-full h-full flex justify-between px-4"
           tabIndex={0}
           id={id}
           role="button"
@@ -50,9 +61,9 @@ function AMMInput(props: SelectBoxProps) {
           onClick={toggleShowSelectDropDown}
         >
           <div className="w-full self-center bg-white">
-            {selectedOption || selectOptions[0]}
+            {selectedOption?.split("-")[0] || preSelection}
           </div>
-          <div className={styles.dropSouth}>
+          <div className="self-center">
             <DropdownIcon dropped={showSelectDropDown} />
           </div>
         </div>
@@ -70,8 +81,7 @@ function AMMInput(props: SelectBoxProps) {
                 onKeyDown={() => {}}
                 onClick={() => {
                   setSelectedOption(selectOption);
-
-                  getInputedValue(selectOption);
+                  getInputedValue(selectOption.split("-")[1]);
                   toggleShowSelectDropDown();
                 }}
               >
@@ -80,7 +90,7 @@ function AMMInput(props: SelectBoxProps) {
                     selectedOption === selectOption ? "text-crest-black500" : ""
                   }
                 >
-                  {selectOption}
+                  {selectOption.split("-")[0]}
                 </span>
               </div>
             ))

@@ -9,6 +9,7 @@ export type SelectBoxProps = {
   variant?: Variant;
   selectOptions: any[];
   activeSelectOption?: string;
+  preSelection?: string;
   label?: string;
   value?: string;
   height?: string;

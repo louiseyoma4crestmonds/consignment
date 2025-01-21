@@ -306,7 +306,6 @@ function CustomInput(props: CustomInputProps) {
               selectOptions={selectOptions || []}
               getInputedValue={getInputedValue}
               activeSelectOption={preSelection}
-              preSelection={preSelection}
             />
           </div>
         ) : variant === "phone" ? (

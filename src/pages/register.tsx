@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import Router from "next/router";
 import UtilityBar from "@/organisms/UtilityBar";
 import Footer from "@/organisms/Footer";
-import Backdrop from "@/atoms/Backdrop";
+import Backdrop from "@/molecules/Backdrop";
 import NewModal from "@/organisms/NewModal/NewModal";
 import CustomInput from "@/molecules/CustomInput";
-import CheckBox from "@/atoms/CheckBox";
 import { createFreeAccount } from "./api";
 
 function Register(): JSX.Element {
   const [introPage, setIntroPage] = useState<boolean>(true);
-  const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
-  const [signupError, setSignupError] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [successfulRequest, setSuccessfulRequest] = useState<boolean>(false);
+  const [failedRequest, setFailedRequest] = useState<boolean>(false);
   const securityQuestion = [
     "What is your mothers first",
     "What is your place of birth",
@@ -23,6 +23,20 @@ function Register(): JSX.Element {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [secreteAnswer, setSecreteAnswer] = useState("");
+  const [secreteQuestion, setSecretQuestion] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [company, setCompany] = useState("");
+  const [country, setCountry] = useState("United States");
+  const [postalCode, setPostalCode] = useState("");
+  const [province, setProvince] = useState("");
+  const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
 
   console.log(setEmail, setFirstName, setLastName);
 
@@ -37,17 +51,40 @@ function Register(): JSX.Element {
 
   const createAccount = async (event: any) => {
     event.preventDefault();
-    createFreeAccount({ email, firstName, lastName }).then((response: any) => {
+    createFreeAccount({
+      email,
+      firstName,
+      lastName,
+      password,
+      confirmPassword,
+      confirmEmail,
+      userId,
+      secreteAnswer,
+      secreteQuestion,
+      address1,
+      address2,
+      company,
+      country,
+      postalCode,
+      province,
+      phone,
+      city,
+    }).then((response: any) => {
+      console.log("++++++++++++++++: ", response);
       if (response?.data?.code === 201) {
-        setShowSuccessModal(true);
+        setSuccessfulRequest(true);
+        setShowModal(true);
         setTimeout(() => {
-          setShowSuccessModal(false);
+          setShowModal(false);
+          setSuccessfulRequest(false);
           Router.replace({ pathname: "/sign-in" });
         }, 3000);
       } else {
-        setSignupError(true);
+        setShowModal(true);
+        setFailedRequest(true);
         setTimeout(() => {
-          setSignupError(false);
+          setShowModal(false);
+          setFailedRequest(false);
         }, 3000);
       }
     });
@@ -92,7 +129,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setUserId}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -102,7 +139,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setPassword}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -112,7 +149,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setConfirmPassword}
                     />
                   </div>
                 </div>
@@ -135,7 +172,7 @@ function Register(): JSX.Element {
                         required
                         width="middle"
                         height="small"
-                        getInputedValue={() => {}}
+                        getInputedValue={setSecretQuestion}
                       />
                     </div>
                     <div className="w-3/6 phone:w-full">
@@ -145,7 +182,7 @@ function Register(): JSX.Element {
                         required
                         width="middle"
                         height="small"
-                        getInputedValue={() => {}}
+                        getInputedValue={setSecreteAnswer}
                       />
                     </div>
                   </div>
@@ -162,7 +199,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setFirstName}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -172,7 +209,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setLastName}
                     />
                   </div>
 
@@ -188,7 +225,7 @@ function Register(): JSX.Element {
                         required
                         width="middle"
                         height="small"
-                        getInputedValue={() => {}}
+                        getInputedValue={setCompany}
                       />
                     </div>
                   </div>
@@ -204,7 +241,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setCountry}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -214,7 +251,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setPostalCode}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -224,7 +261,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setAddress1}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -234,7 +271,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setAddress2}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -244,7 +281,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setCity}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -254,7 +291,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setProvince}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -264,7 +301,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setEmail}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -274,7 +311,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setConfirmEmail}
                     />
                   </div>
                   <div className="w-3/6 phone:w-full">
@@ -284,7 +321,7 @@ function Register(): JSX.Element {
                       required
                       width="middle"
                       height="small"
-                      getInputedValue={() => {}}
+                      getInputedValue={setPhone}
                     />
                   </div>
                 </div>
@@ -294,19 +331,14 @@ function Register(): JSX.Element {
                 </div>
                 <div className="bg-gray60 text-black  px-2  ">
                   <div className="text-black py-4">
-                    I have read, understood and agree to be bound by the
-                    following. I also understand how FedEx intends to use my
+                    By submitting this form you agree that you have read,
+                    understood and agree to be bound by our terms. You also
+                    understand how GlobeGoExpress intends to use your
                     information.
                   </div>
                   <div className="px-8 space-y-4 py-4">
                     <div className="w-5/6 phone:w-full flex gap-x-1">
-                      <div>
-                        <CheckBox
-                          checked={false}
-                          state="default"
-                          getCheckedElement={() => {}}
-                        />
-                      </div>
+                      <div></div>
                       <div>
                         {" "}
                         I would like to receive information about FedEx via
@@ -327,49 +359,65 @@ function Register(): JSX.Element {
                 </div>
               </div>
             </form>
-            <div
-              className={
-                signupError
-                  ? "w-full text-center text-[#FF4B4B] text-sm py-2"
-                  : "hidden"
-              }
-            >
-              Email already exists please try again
-            </div>
           </div>
         </div>
-        <NewModal
-          modalHeading="Account Creation Status"
-          setShowModal={() => {
-            setShowSuccessModal(false);
-          }}
-        >
-          <div className="w-full  text-center py-8 space-y-4">
-            <div className="flex place-content-center">
-              <svg
-                width="64"
-                height="64"
-                viewBox="0 0 64 64"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+        <div className={showModal ? "" : "hidden"}>
+          <Backdrop>
+            <NewModal
+              modalHeading="Account Creation"
+              showModal={showModal}
+              setShowModal={setShowModal}
+            >
+              <div
+                className={
+                  successfulRequest
+                    ? "w-full text-center space-y-4 text-2xl font-bold py-12 text-green100"
+                    : "hidden"
+                }
               >
-                <path
-                  d="M43.174 5.3335H20.8273C11.1207 5.3335 5.33398 11.1202 5.33398 20.8268V43.1468C5.33398 52.8802 11.1207 58.6668 20.8273 58.6668H43.1473C52.854 58.6668 58.6407 52.8802 58.6407 43.1735V20.8268C58.6673 11.1202 52.8807 5.3335 43.174 5.3335ZM44.7473 25.8668L29.6273 40.9868C29.254 41.3602 28.7473 41.5735 28.214 41.5735C27.6807 41.5735 27.174 41.3602 26.8007 40.9868L19.254 33.4402C18.4807 32.6668 18.4807 31.3868 19.254 30.6135C20.0273 29.8402 21.3073 29.8402 22.0807 30.6135L28.214 36.7468L41.9207 23.0402C42.694 22.2668 43.974 22.2668 44.7473 23.0402C45.5207 23.8135 45.5207 25.0668 44.7473 25.8668Z"
-                  fill="#43B765"
-                />
-              </svg>
-            </div>
-
-            <div className="w-full text-center font-bold text-base">
-              Account Created Successfully
-            </div>
-            <div className="text-orange100">
-              Your login credentials has been sent to your email
-            </div>
-          </div>
-        </NewModal>
-        <div className={showSuccessModal ? "" : "hidden"}>
-          <Backdrop />
+                <div>Account has been created successfully</div>
+                <div className="w-full flex place-content-center">
+                  <svg
+                    width="97"
+                    height="96"
+                    viewBox="0 0 97 96"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M65.261 8.00024H31.741C17.181 8.00024 8.50098 16.6802 8.50098 31.2402V64.7202C8.50098 79.3202 17.181 88.0002 31.741 88.0002H65.221C79.781 88.0002 88.461 79.3202 88.461 64.7602V31.2402C88.501 16.6802 79.821 8.00024 65.261 8.00024ZM67.621 38.8002L44.941 61.4802C44.381 62.0402 43.621 62.3602 42.821 62.3602C42.021 62.3602 41.261 62.0402 40.701 61.4802L29.381 50.1602C28.221 49.0002 28.221 47.0802 29.381 45.9202C30.541 44.7602 32.461 44.7602 33.621 45.9202L42.821 55.1202L63.381 34.5602C64.541 33.4002 66.461 33.4002 67.621 34.5602C68.781 35.7202 68.781 37.6002 67.621 38.8002Z"
+                      fill="#43B765"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className={
+                  failedRequest
+                    ? "w-full text-center space-y-4 text-2xl font-bold py-12 text-errorRed"
+                    : "hidden"
+                }
+              >
+                <div>
+                  There was a problem with your egistration. Please Try again!
+                </div>
+                <div className="w-full flex place-content-center">
+                  <svg
+                    width="97"
+                    height="96"
+                    viewBox="0 0 97 96"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M78.5397 23.4L54.7797 9.68C50.8997 7.44 46.0997 7.44 42.1797 9.68L18.4597 23.4C14.5797 25.64 12.1797 29.8 12.1797 34.32V61.68C12.1797 66.16 14.5797 70.32 18.4597 72.6L42.2197 86.32C46.0997 88.56 50.8997 88.56 54.8197 86.32L78.5797 72.6C82.4597 70.36 84.8597 66.2 84.8597 61.68V34.32C84.8197 29.8 82.4197 25.68 78.5397 23.4ZM45.4997 31C45.4997 29.36 46.8597 28 48.4997 28C50.1397 28 51.4997 29.36 51.4997 31V52C51.4997 53.64 50.1397 55 48.4997 55C46.8597 55 45.4997 53.64 45.4997 52V31ZM52.1797 66.52C51.9797 67 51.6997 67.44 51.3397 67.84C50.5797 68.6 49.5797 69 48.4997 69C47.9797 69 47.4597 68.88 46.9797 68.68C46.4597 68.48 46.0597 68.2 45.6597 67.84C45.2997 67.44 45.0197 67 44.7797 66.52C44.5797 66.04 44.4997 65.52 44.4997 65C44.4997 63.96 44.8997 62.92 45.6597 62.16C46.0597 61.8 46.4597 61.52 46.9797 61.32C48.4597 60.68 50.2197 61.04 51.3397 62.16C51.6997 62.56 51.9797 62.96 52.1797 63.48C52.3797 63.96 52.4997 64.48 52.4997 65C52.4997 65.52 52.3797 66.04 52.1797 66.52Z"
+                      fill="#C80012"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </NewModal>
+          </Backdrop>
         </div>
       </div>
       <Footer />

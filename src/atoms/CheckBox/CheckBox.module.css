@@ -16,10 +16,10 @@
 
 /* Styling for checked*/
 .checked {
-  @apply bg-maroon100;
+  @apply bg-maroon100 text-maroon100;
 }
 
 /* Styling for unchecked*/
 .unchecked {
-  @apply bg-white;
+  @apply bg-white text-white;
 }

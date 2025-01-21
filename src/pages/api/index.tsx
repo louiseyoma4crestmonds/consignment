@@ -63,6 +63,14 @@ export async function createFreeAccount(accountDetails: any) {
   return response;
 }
 
+export async function createBusinessAccount(accountDetails: any) {
+  const response = await axios
+    .post(`${SERVER_URL}/user-account/business-account/request`, accountDetails)
+    .then((res) => res)
+    .catch((err) => err.message);
+  return response;
+}
+
 export async function getPromoCode(promoCode: string, token: string) {
   const response = await axios
     .get(`${SERVER_URL}/celebrity-management/get-promo-code/${promoCode}`, {
