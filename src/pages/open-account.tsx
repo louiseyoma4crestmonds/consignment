@@ -15,7 +15,7 @@ function OpenAccount(): JSX.Element {
         <div
           className="phone:h-[250px] w-full   "
           style={{
-            backgroundImage: `url('/Open-hero.jpg')`,
+            backgroundImage: `url('/open-hero.jpg')`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "",
