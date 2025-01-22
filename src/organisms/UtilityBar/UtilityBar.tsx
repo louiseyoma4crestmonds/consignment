@@ -8,9 +8,10 @@ import useClickOutside from "@/hooks/useClickOutside";
 import Logo from "@/atoms/Logo";
 // import the icons you need
 import user from "public/user.png";
+import { getSessionDetails } from "src/pages/api";
 import styles from "./UtilityBar.module.css";
 import { UtilityBarProps } from "./UtilityBar.types";
-import { getSessionDetails } from "src/pages/api";
+
 
 function UtilityBar(props: UtilityBarProps): JSX.Element {
   const router = useRouter();
@@ -38,10 +39,10 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
         .then((response: any) => {
           console.log("gfgfgf", response);
           setSignedIn(response);
-          //setToken(response?.user.accessToken.token.tokenData.userToken);
+          setToken(response?.user.accessToken.token.tokenData.userToken);
         })
         .catch(() => {
-          //Router.replace({ pathname: "/sign-in" });
+          //
         });
     }
   });
@@ -130,6 +131,7 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
               <div
                 className="px-6 py-6 phone:border-b border-b-maroon100 cursor-pointer flex justify-between bg-white text-errorRed "
                 role="button"
+                tabIndex={0}
                 onKeyDown={() => {}}
                 onClick={() => {
                   signUserOut();
