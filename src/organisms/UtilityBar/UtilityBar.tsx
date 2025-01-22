@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Router, { useRouter } from "next/router";
+import { signOut } from "next-auth/react";
+import { destroyCookie } from "nookies";
 import CloseButton from "@/atoms/CloseButton";
 import useClickOutside from "@/hooks/useClickOutside";
 import Logo from "@/atoms/Logo";
@@ -8,14 +10,41 @@ import Logo from "@/atoms/Logo";
 import user from "public/user.png";
 import styles from "./UtilityBar.module.css";
 import { UtilityBarProps } from "./UtilityBar.types";
+import { getSessionDetails } from "src/pages/api";
 
 function UtilityBar(props: UtilityBarProps): JSX.Element {
   const router = useRouter();
+  const [token, setToken] = useState<string>("");
+  const [signedIn, setSignedIn] = useState<string>("");
   const [showMobileNavBar, setShowMobileNavBar] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState("");
   const [activeTab, setActiveTab] = useState("/");
   const { getCelebrityId } = props;
   const dropdownRef = useClickOutside(() => setSelectedMenu(""));
+
+  const signUserOut = () => {
+    signOut({ redirect: true, callbackUrl: "/" });
+    destroyCookie(null, "csrftoken");
+    destroyCookie(null, "__Secure-next-auth.callback-url");
+    destroyCookie(null, "consentPolicy");
+    destroyCookie(null, "__Host-next-auth.csrf-token");
+    destroyCookie(null, "next-auth.session-token");
+    Router.replace({ pathname: "/" });
+  };
+
+  useEffect(() => {
+    if (token === "") {
+      getSessionDetails()
+        .then((response: any) => {
+          console.log("gfgfgf", response);
+          setSignedIn(response);
+          //setToken(response?.user.accessToken.token.tokenData.userToken);
+        })
+        .catch(() => {
+          //Router.replace({ pathname: "/sign-in" });
+        });
+    }
+  });
 
   useEffect(() => {
     setActiveTab(router.route);
@@ -84,6 +113,32 @@ function UtilityBar(props: UtilityBarProps): JSX.Element {
               <div className="self-center uppercase">{link.name}</div>
             </div>
           ))}
+          <div className="">
+            {signedIn === null ? (
+              <div
+                className="px-6 py-6 phone:border-b border-b-maroon100 cursor-pointer flex justify-between bg-white text-green100 hover:bg-backgroundCream hover:text-maroon100"
+                tabIndex={0}
+                role="button"
+                onKeyDown={() => {}}
+                onClick={() => {
+                  router.push({ pathname: "/sign-in" });
+                }}
+              >
+                SIGN IN
+              </div>
+            ) : (
+              <div
+                className="px-6 py-6 phone:border-b border-b-maroon100 cursor-pointer flex justify-between bg-white text-errorRed "
+                role="button"
+                onKeyDown={() => {}}
+                onClick={() => {
+                  signUserOut();
+                }}
+              >
+                LOGOUT
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

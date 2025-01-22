@@ -40,7 +40,7 @@ function Dashboard(): JSX.Element {
           <div className="w-full h-full flex place-content-center ">
             <div className="self-center w-full text-white px-16 phone:px-4 space-y-4 phone:text-center">
               <div className="font-black text-5xl text-backgroundCream">
-                Welcome, {firstName===""?email:firstName}
+                Welcome, {firstName === "" ? email.split("@")[0] : firstName}
               </div>
             </div>
           </div>
