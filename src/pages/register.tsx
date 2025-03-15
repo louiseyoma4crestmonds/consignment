@@ -341,9 +341,9 @@ function Register(): JSX.Element {
                       <div />
                       <div>
                         {" "}
-                        I would like to receive information about FedEx via
-                        e-mail, including special offers and promotions. You can
-                        withdraw your consent at any time.
+                        I would like to receive information about GlobeGoExpress
+                        via e-mail, including special offers and promotions. You
+                        can withdraw your consent at any time.
                       </div>
                     </div>
                   </div>

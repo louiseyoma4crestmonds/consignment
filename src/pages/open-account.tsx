@@ -29,8 +29,8 @@ function OpenAccount(): JSX.Element {
               </div>
               <div className="w-4/6 phone:w-full ">
                 Take advantage of our services and solutions designed to meet
-                all of your shipping requirements. Open a FedEx shipping account
-                below. Let’s get started!
+                all of your shipping requirements. Open a GlobeGoExpress
+                shipping account below. Let’s get started!
               </div>
             </div>
           </div>
@@ -60,19 +60,19 @@ function OpenAccount(): JSX.Element {
         </div>
         <div className="flex flex-row phone:flex-col phone:gap-y-12 justify-between text-center py-16 px-16">
           <div className="space-y-8">
-            <Image src={specificRate} width={80} height={80} />
+            <Image src={specificRate} width={80} height={80} alt="rates" />
             <div className="text-2xl">Get your account-specific rate</div>
           </div>
           <div className="space-y-8">
-            <Image src={van} width={80} height={80} />
+            <Image src={van} width={80} height={80} alt="van" />
             <div className="text-2xl">Schedule and manage pickup</div>
           </div>
           <div className="space-y-8">
-            <Image src={suppiles} width={80} height={80} />
+            <Image src={suppiles} width={80} height={80} alt="supplies" />
             <div className="text-2xl">Free supplies</div>
           </div>
           <div className="space-y-8">
-            <Image src={account} width={80} height={80} />
+            <Image src={account} width={80} height={80} alt="account" />
             <div className="text-2xl">View and manage your bills online</div>
           </div>
         </div>

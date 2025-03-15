@@ -221,7 +221,8 @@ function OpenBusinessAccount(): JSX.Element {
                 />
                 <div>
                   I agree to receive regular communications of promotions,
-                  information and news on specific FedEx solutions per email.
+                  information and news on specific GlobeGoExpress solutions per
+                  email.
                 </div>
               </div>
               <div className="flex gap-x-2">

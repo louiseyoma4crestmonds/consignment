@@ -84,7 +84,12 @@ function Home(): JSX.Element {
                 <div className="self-center flex place-content-center bg-backgroundCream w-48 phone:w-28 h-36 uppercase font-bold">
                   <div className="self-center">
                     <div>
-                      <Image src={calculator} height={50} width={50} />
+                      <Image
+                        src={calculator}
+                        height={50}
+                        width={50}
+                        alt="rates and transit time"
+                      />
                     </div>
                     <div>Rate & Transit Times</div>
                   </div>
@@ -94,7 +99,12 @@ function Home(): JSX.Element {
               <div className="self-center flex place-content-center text-white bg-maroon100 w-48 phone:w-28 h-48 uppercase font-bold">
                 <div className="self-center">
                   <div>
-                    <Image src={orderTracking} height={50} width={50} />
+                    <Image
+                      src={orderTracking}
+                      height={50}
+                      width={50}
+                      alt="tracking"
+                    />
                   </div>
                   <div>Track</div>
                 </div>
@@ -102,7 +112,12 @@ function Home(): JSX.Element {
               <div className="self-center flex place-content-center bg-backgroundCream w-48 phone:w-28 h-36 uppercase font-bold">
                 <div className="self-center">
                   <div>
-                    <Image src={singlePackage} height={50} width={50} />
+                    <Image
+                      src={singlePackage}
+                      height={50}
+                      width={50}
+                      alt="package"
+                    />
                   </div>
                   <div>Ship</div>
                 </div>
@@ -145,7 +160,7 @@ function Home(): JSX.Element {
               onClick={() => {}}
               className="text-center space-y-4"
             >
-              <Image src={van} width={100} height={100} />
+              <Image src={van} width={100} height={100} alt="van" />
               <div>Redirect your package</div>
             </div>
             <div
@@ -155,7 +170,7 @@ function Home(): JSX.Element {
               onClick={() => {}}
               className="text-center space-y-4"
             >
-              <Image src={location} width={100} height={100} />
+              <Image src={location} width={100} height={100} alt="location" />
               <div>Find Locations</div>
             </div>
             <div
@@ -165,7 +180,7 @@ function Home(): JSX.Element {
               onClick={() => {}}
               className="text-center space-y-4"
             >
-              <Image src={coin} width={100} height={100} />
+              <Image src={coin} width={100} height={100} alt="coin" />
               <div>Fuel Surcharge</div>
             </div>
           </div>
@@ -174,7 +189,7 @@ function Home(): JSX.Element {
         <div className="px-32 phone:px-4">
           <div className="bg-maroon100 text-wite flex flex-row phone:flex-col phone:gap-y-8 p-12 phone:px-4 justify-between">
             <div className="phone:self-center">
-              <Image src={supermarket} width={100} height={100} />
+              <Image src={supermarket} width={100} height={100} alt="market" />
             </div>
             <div className="basis-6/12 space-y-4 text-white">
               <div className="font-bold text-2xl">
@@ -204,7 +219,7 @@ function Home(): JSX.Element {
         <div className="px-4 py-8">
           <div className="flex flex-row phone:flex-col gap-x-4 phone:gap-x-0 phone:gap-y-4">
             <div>
-              <Image src={hacker} />
+              <Image src={hacker} alt="fraud-detection" />
             </div>
             <div className="h-full self-center flex place-content-center">
               <div className="space-y-4 place-content-center h-full self-center ">

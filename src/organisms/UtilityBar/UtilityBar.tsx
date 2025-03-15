@@ -12,7 +12,6 @@ import { getSessionDetails } from "src/pages/api";
 import styles from "./UtilityBar.module.css";
 import { UtilityBarProps } from "./UtilityBar.types";
 
-
 function UtilityBar(props: UtilityBarProps): JSX.Element {
   const router = useRouter();
   const [token, setToken] = useState<string>("");
