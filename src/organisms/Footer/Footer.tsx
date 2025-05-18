@@ -3,6 +3,7 @@ import facebook from "public/facebook.png";
 import x from "public/x.png";
 import youtube from "public/youtube.png";
 import linkedin from "public/linkedin.png";
+import Router from "next/router";
 
 function Footer(): JSX.Element {
   return (
@@ -35,7 +36,18 @@ function Footer(): JSX.Element {
             <div className="capitalize space-y-4">
               <div>Fuel Surchages</div>
               <div>Resources</div>
-              <div>GlobeGoExpress Locations</div>
+              <div
+                tabIndex={0}
+                role="button"
+                onKeyDown={() => {
+                  Router.push({ pathname: "/contact" });
+                }}
+                onClick={() => {
+                  Router.push({ pathname: "/contact" });
+                }}
+              >
+                GlobeGoExpress Locations
+              </div>
               <div>Rates & Surchages</div>
             </div>
           </div>

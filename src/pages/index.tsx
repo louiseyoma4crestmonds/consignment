@@ -167,11 +167,13 @@ function Home(): JSX.Element {
               role="button"
               tabIndex={0}
               onKeyDown={() => {}}
-              onClick={() => {}}
+              onClick={() => {
+                Router.push({ pathname: "/contact" });
+              }}
               className="text-center space-y-4"
             >
               <Image src={location} width={100} height={100} alt="location" />
-              <div>Find Locations</div>
+              <div>Location</div>
             </div>
             <div
               role="button"

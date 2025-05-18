@@ -1,5 +1,7 @@
+import Image from "next/image";
 import styles from "./Closebutton.module.css";
 import { CloseButtonProps } from "./CloseButton.types";
+import close from "../../../public/klose.png";
 
 function CloseButton(props: CloseButtonProps) {
   const { onclick } = props;
@@ -18,9 +20,7 @@ function CloseButton(props: CloseButtonProps) {
       }}
       onKeyDown={handleOnClick}
     >
-      <div className="w-8 h-8 rounded-full bg-maroon100 text-white border border-white p-3 flex place-content-center hover:bg-white hover:text-maroon100">
-        <div className="self-center text-xs">X</div>
-      </div>
+      <Image src={close} />
     </div>
   );
 }
