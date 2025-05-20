@@ -5,11 +5,11 @@ export default function Document() {
     <Html>
       <Head>
         <title>
-          GLOBEGOEXPRESS Home - Global Logistics and International Shipping
+          GlobeGoExpress Home - Global Logistics and International Shipping
         </title>
         <meta
           name="description"
-          content="Discover GLOBEGOEXPRESS —the unrivaled global leader in international express shipping."
+          content="Discover GlobeGoExpress —the unrivaled global leader in international express shipping."
         />
         <meta name="robots" content="index, follow" />
         <meta
@@ -20,7 +20,10 @@ export default function Document() {
           property="og:description"
           content="Providing quality, swift and reliable logistics for all"
         />
-        <meta property="og:image" content="/globegoexpress.png" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/dvzdavdtc/image/upload/v1747726895/glogegoexpress_hatedl.png"
+        />
         <meta property="og:type" content="/website" />
       </Head>
       <body style={{ fontFamily: "RobotoSerif" }} className="font-Merriweather">
